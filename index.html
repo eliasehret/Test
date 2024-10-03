@@ -21,7 +21,7 @@
         document.getElementById("uploadForm").addEventListener("submit", async function(event){
             event.preventDefault();
 
-            const fileInput = event.target.photo.files[0];
+            const fileInput = event.target.foto.files[0];
             const reader = new FileReader();
 
             reader.onloadend = async function() {
