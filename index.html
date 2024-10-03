@@ -12,7 +12,7 @@
         <input type="text" id="name" name="name" required><br><br>
         
         <label for="photo">Foto hochladen:</label><br>
-        <input type="file" id="foto" name="foto" type="image/*" required><br><br>
+        <input type="file" id="photo" name="photo" type="image/*" required><br><br>
         
         <button type="submit">Absenden</button>
     </form>
@@ -21,7 +21,7 @@
         document.getElementById("uploadForm").addEventListener("submit", async function(event){
             event.preventDefault();
 
-            const fileInput = event.target.foto.files[0];
+            const fileInput = event.target.photo.files[0];
             const reader = new FileReader();
 
             reader.onloadend = async function() {
