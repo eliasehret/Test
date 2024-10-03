@@ -18,6 +18,37 @@
     </form>
 
     <script>
+    document.getElementById("seminarForm").addEventListener("submit", function(event){
+     event.preventDefault();
+
+        const data = {
+            name: event.target.name.value,
+            email: event.target.email.value               
+        };
+
+        fetch("https://prod-243.westeurope.logic.azure.com:443/workflows/5f72913b3067460980817306b9cdeea8/triggers/manual/paths/invoke?api-version=2016-06-01");
+        method: "POST",
+        headers: {
+           "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if(response.ok){
+             alert("Form submitted successfully!");
+        }else{
+            response.json().then(errorData => {
+                console.error("Response error:", errorData);
+                alert("Form submission failed. Response error:" + JSON.stringify(errorData));
+            }).catch(() => {
+                    alert("Form submission failed. Fetch error: " + error.message);
+            });
+        }
+    }).catch(error => {
+        console.error("Fetch error:", error);
+        alert("form submission failed. Fetch error: " + error.message);
+    });
+        
+        /*
         const form = document.getElementById('uploadForm');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -29,6 +60,7 @@
             const result = await response.json();
             alert(result.message);
         });
+        */
     </script>
 </body>
 </html>
