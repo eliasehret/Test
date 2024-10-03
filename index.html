@@ -26,28 +26,29 @@
                 email: event.target.email.value               
             };
         
-            fetch("https://prod-243.westeurope.logic.azure.com:443/workflows/5f72913b3067460980817306b9cdeea8/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Q1UNbolQLiVBshQ2owvGWS9UXB7q7kKK8ql7l-2Pe6E");
+            fetch("https://prod-243.westeurope.logic.azure.com:443/workflows/5f72913b3067460980817306b9cdeea8/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Q1UNbolQLiVBshQ2owvGWS9UXB7q7kKK8ql7l-2Pe6E", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         
-        }).then(response => {
-            if(response.ok){
-                alert("Form submitted successfully!");
-            }
-            else{
-                response.json().then(errorData => {
-                    console.error("Response error:", errorData);
-                    alert("Form submission failed. Response error:" + JSON.stringify(errorData));
-                }).catch(() => {
-                    alert("Form submission failed. Fetch error: " + error.message);
-                });
-            }
-        }).catch(error => {
-            console.error("Fetch error:", error);
-            alert("form submission failed. Fetch error: " + error.message);
+            }).then(response => {
+                if(response.ok){
+                    alert("Form submitted successfully!");
+                }
+                else{
+                    response.json().then(errorData => {
+                        console.error("Response error:", errorData);
+                        alert("Form submission failed. Response error:" + JSON.stringify(errorData));
+                    }).catch(() => {
+                        alert("Form submission failed. Fetch error: " + error.message);
+                    });
+                }
+            }).catch(error => {
+                console.error("Fetch error:", error);
+                alert("form submission failed. Fetch error: " + error.message);
+            });
         });
     </script>
 </body>
