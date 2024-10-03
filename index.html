@@ -26,8 +26,9 @@
 
             reader.onloadend = async function() {
                 // Datei in Base64 konvertieren
-                const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
-
+                //const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+                const base64String = reader.result.split(',')[1]; 
+                
                 // Daten für den JSON-Body
                 const data = {
                     name: event.target.name.value,
